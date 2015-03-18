@@ -11,6 +11,7 @@
 
 			body {
 				background-color: #000000;
+				background: radial-gradient(#000000, #003355);
 				margin: 0;
 				font-family: Helvetica, sans-serif;;
 				overflow: hidden;
@@ -37,20 +38,25 @@
 				bottom: 20px;
 				width: 100%;
 				text-align: center;
+				opacity: 0;
+			}
+			
+			#menu:hover {
+                                opacity: 1;
 			}
 
 			.element {
-				width: 120px;
-				height: 160px;
-				box-shadow: 0px 0px 12px rgba(0,255,255,0.5);
+				width: 480px;
+				height: 640px;
+				box-shadow: 0px 0px 12px rgba(255,255,255,0.5);
 				border: 1px solid rgba(127,255,255,0.25);
 				text-align: center;
 				cursor: default;
 			}
 
 			.element:hover {
-				box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
-				border: 1px solid rgba(127,255,255,0.75);
+				box-shadow: 0px 0px 144px rgba(255,255,255,0.75);
+				border: 7px outset rgba(255,255,255,0.75);
 			}
 
 				.element .number {
@@ -96,16 +102,46 @@
 				color: #000000;
 				background-color: rgba(0,255,255,0.75);
 			}
+			
+			.loading {
+                            width: 100%;
+                            max-width: 600px;
+                            margin: 0 auto;
+                            padding: 0;
+                            z-index: -1;
+                        }
+
+                        .loading svg {
+                            width: 100%;
+                            height: 100%;
+                        }
+
+                        .loading #pulsar{
+                            stroke-dasharray: 400;
+                            -webkit-animation: dash 4s infinite linear forwards;
+                        }
+
+                        /*Animation*/
+                        @-webkit-keyframes dash{ from{stroke-dashoffset:814;} to {stroke-dashoffset:-814;}}
 		</style>
 	</head>
 	<body>
+                <script src="../build/stats.min.js"></script>
 		<script src="../build/three.min.js"></script>
 		<script src="js/libs/tween.min.js"></script>
 		<script src="js/controls/TrackballControls.js"></script>
 		<script src="js/renderers/CSS3DRenderer.js"></script>
-
+                
 		<div id="container"></div>
-		<div id="info"><a href="http://threejs.org" target="_blank">three.js css3d</a> - periodic table. <a href="https://plus.google.com/113862800338869870683/posts/QcFk5HrWran" target="_blank">info</a>.</div>
+		                <div class="loading">
+
+                    <svg version="1.2" height="200" width="100%" xmlns="http://www.w3.org/2000/svg" viewport="0 0 60 60" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+                    <path id="pulsar" stroke="rgba(0,155,155,1)" fill="none" stroke-width="1"stroke-linejoin="round" d="M0,90L250,90Q257,60 262,87T267,95 270,88 273,92t6,35 7,-60T290,127 297,107s2,-11 10,-10 1,1 8,-10T319,95c6,4 8,-6 10,-17s2,10 9,11h210" /> 
+     
+                    </svg>
+  
+                </div>
 		<div id="menu">
 			<button id="table">TABLE</button>
 			<button id="sphere">SPHERE</button>
@@ -116,10 +152,10 @@
 		<script>
 
 			var table = [
-				"H", "Hydrogen", "1.00794", 1, 1,
-				"He", "Helium", "4.002602", 18, 1,
-				"Li", "Lithium", "6.941", 1, 2,
-				"Be", "Beryllium", "9.012182", 2, 2,
+				"Hello", "Hydrogen", "1.00794", 1, 1,
+				"Areion iOS", "Helium", "4.002602", 18, 1,
+				"Areion Android App", "Lithium", "6.941", 1, 2,
+				"DHL Mobile Middleware", "Beryllium", "9.012182", 2, 2,
 				"B", "Boron", "10.811", 13, 2,
 				"C", "Carbon", "12.0107", 14, 2,
 				"N", "Nitrogen", "14.0067", 15, 2,
@@ -235,6 +271,10 @@
 				"Uus", "Ununseptium", "(294)", 17, 7,
 				"Uuo", "Ununoctium", "(294)", 18, 7
 			];
+			
+			var elementWidth = 480;
+                        var elementHeight = 640;
+
 
 			var camera, scene, renderer;
 			var controls;
@@ -248,7 +288,7 @@
 			function init() {
 
 				camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 );
-				camera.position.z = 3000;
+				camera.position.z = 12000;
 
 				scene = new THREE.Scene();
 
@@ -258,8 +298,22 @@
 
 					var element = document.createElement( 'div' );
 					element.className = 'element';
-					element.style.backgroundColor = 'rgba(0,127,127,' + ( Math.random() * 0.5 + 0.25 ) + ')';
-
+					
+					//element.style.backgroundColor = 'rgba(0,127,127,' + ( Math.random() * 0.5 + 0.25 ) + ')';
+					var success = Math.random();
+					if (success > 0.3) {
+                                            element.style.backgroundColor = 'rgba(0,150,200,' + ( Math.random() * 0.25 + 0.5 ) + ')';
+					}
+					else if (success > 0.2) {
+                                            element.style.backgroundColor = 'rgba(200,200,100,' + ( Math.random() * 0.25 + 0.5 ) + ')';
+                                        }
+                                        else if (success > 0.1) {
+                                            element.style.backgroundColor = 'rgba(100,100,100,' + ( Math.random() * 0.25 + 0.5 ) + ')';
+                                        }
+					else {
+                                            element.style.backgroundColor = 'rgba(200,50,50,' + ( Math.random() * 0.25 + 0.5 ) + ')';
+					}
+					
 					var number = document.createElement( 'div' );
 					number.className = 'number';
 					number.textContent = (i/5) + 1;
@@ -276,7 +330,7 @@
 					element.appendChild( details );
 
 					var object = new THREE.CSS3DObject( element );
-					object.position.x = Math.random() * 4000 - 2000;
+					object.position.x = Math.random() * 4000 - 2000 - 1000;
 					object.position.y = Math.random() * 4000 - 2000;
 					object.position.z = Math.random() * 4000 - 2000;
 					scene.add( object );
@@ -286,8 +340,8 @@
 					//
 
 					var object = new THREE.Object3D();
-					object.position.x = ( table[ i + 3 ] * 140 ) - 1330;
-					object.position.y = - ( table[ i + 4 ] * 180 ) + 990;
+					object.position.x = ( table[ i + 3 ] * 500 ) - 1330 * 3.5;
+					object.position.y = - ( table[ i + 4 ] * 660 ) + 990 * 4;
 
 					targets.table.push( object );
 
@@ -304,9 +358,9 @@
 
 					var object = new THREE.Object3D();
 
-					object.position.x = 800 * Math.cos( theta ) * Math.sin( phi );
-					object.position.y = 800 * Math.sin( theta ) * Math.sin( phi );
-					object.position.z = 800 * Math.cos( phi );
+					object.position.x = 800 * 3 * Math.cos( theta ) * Math.sin( phi );
+					object.position.y = 800 * 3 * Math.sin( theta ) * Math.sin( phi );
+					object.position.z = 800 * 3 * Math.cos( phi );
 
 					vector.copy( object.position ).multiplyScalar( 2 );
 
@@ -326,12 +380,12 @@
 
 					var object = new THREE.Object3D();
 
-					object.position.x = 900 * Math.sin( phi );
-					object.position.y = - ( i * 8 ) + 450;
-					object.position.z = 900 * Math.cos( phi );
+					object.position.x = 900 * 4 * Math.sin( phi );
+					object.position.y = - ( i * 8 * 4 ) + (450 * 4);
+					object.position.z = 900 * 4 * Math.cos( phi );
 
 					vector.x = object.position.x * 2;
-					vector.y = object.position.y;
+					vector.y = object.position.y * 2;
 					vector.z = object.position.z * 2;
 
 					object.lookAt( vector );
@@ -346,8 +400,8 @@
 
 					var object = new THREE.Object3D();
 
-					object.position.x = ( ( i % 5 ) * 400 ) - 800;
-					object.position.y = ( - ( Math.floor( i / 5 ) % 5 ) * 400 ) + 800;
+					object.position.x = ( ( i % 5 ) * 400 * 1.25 ) - 800;
+					object.position.y = ( - ( Math.floor( i / 5 ) % 5 ) * 400 * 1.75 ) + 800;
 					object.position.z = ( Math.floor( i / 25 ) ) * 1000 - 2000;
 
 					targets.grid.push( object );
@@ -364,9 +418,9 @@
 				//
 
 				controls = new THREE.TrackballControls( camera, renderer.domElement );
-				controls.rotateSpeed = 0.5;
+				controls.rotateSpeed = 10;
 				controls.minDistance = 500;
-				controls.maxDistance = 6000;
+				controls.maxDistance = 60000;
 				controls.addEventListener( 'change', render );
 
 				var button = document.getElementById( 'table' );
@@ -446,6 +500,8 @@
 
 			function animate() {
 
+                                autoRotate();
+			
 				requestAnimationFrame( animate );
 
 				TWEEN.update();
@@ -459,7 +515,42 @@
 				renderer.render( scene, camera );
 
 			}
+			
+			var radius = 12000;
+                        var theta = 0;
+                        function autoRotate(){
+                        
+                            //theta = 0.01 //the speed of rotation
+                            // rotate camera
+                            //theta += 0.2;
 
+                            //camera.position.x = radius * Math.sin( degToRad( theta ) );
+                            //camera.position.y = radius * Math.sin( degToRad( theta ) );
+                            //camera.position.z = radius * Math.cos( degToRad( theta ) );
+                            //camera.lookAt( scene.position );
+
+                            //camera.updateMatrixWorld();
+                        }
+                        
+                        // Converts from degrees to radians.
+                        function degToRad(degrees) {
+                            return degrees * Math.PI / 180;
+                        }
+ 
+                        // Converts from radians to degrees.
+                        function radToDeg(radians) {
+                            return radians * 180 / Math.PI;
+                        }
+
+                        
+                        var stats = new Stats();
+                        stats.setMode( 2 );
+                        document.body.appendChild( stats.domElement );
+                        setInterval( function () {
+                                var time = Date.now() * 0.001;
+                                stats.begin();
+                                stats.end();
+                        }, 1000 / 60 );
 		</script>
 	</body>
 </html>
