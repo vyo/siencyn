@@ -31,6 +31,10 @@ angular
         templateUrl: 'views/curiad.html',
         controller: 'CuriadCtrl'
       })
+      .when('/contact', {
+        templateUrl: 'views/contact.html',
+        controller: 'ContactCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
