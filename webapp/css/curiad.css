@@ -1,144 +1,146 @@
 html, body {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    background: #ffffff radial-gradient(#4f96a5, #000000);
-    margin: 0;
-    font-family: Helvetica, sans-serif;;
-    overflow: hidden;
+  background: #ffffff radial-gradient(#4f96a5, #000000);
+  margin: 0;
+  font-family: Helvetica, sans-serif;;
+  overflow: hidden;
 }
 
 a {
-    color: #ffffff;
+  color: #ffffff;
 }
 
 #info {
-    position: absolute;
-    width: 100%;
-    color: #ffffff;
-    padding: 5px;
-    font-family: Monospace, sans-serif;
-    font-size: 13px;
-    font-weight: bold;
-    text-align: center;
-    z-index: 1;
-}
-
-#menu {
-    position: absolute;
-    bottom: 20px;
-    width: 100%;
-    text-align: center;
-    opacity: 0;
-}
-
-#menu:hover {
-    background-color: rgba(60, 120, 120, 0.5);
-    opacity: 1;
+  position: absolute;
+  width: 100%;
+  color: #ffffff;
+  padding: 5px;
+  font-family: Monospace, sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  text-align: center;
+  z-index: 1;
 }
 
 .element {
-    width: 480px;
-    height: 640px;
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
-    text-align: center;
-    cursor: default;
+  width: 480px;
+  height: 640px;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+  text-align: center;
+  cursor: default;
 }
 
 .success {
-     background-color: rgba(91, 169, 217, 0.73);
+  background-color: rgba(91, 169, 217, 0.73);
 }
 
 .unstable {
-    background-color: rgba(226, 226, 94, 0.78);
+  background-color: rgba(226, 226, 94, 0.78);
 }
 
 .abort {
-    background-color: rgba(197, 205, 194, 0.73);
+  background-color: rgba(197, 205, 194, 0.73);
 }
 
 .failure {
-    background-color: rgba(219, 62, 63, 0.75);
+  background-color: rgba(219, 62, 63, 0.75);
 }
 
 .element:hover {
-    /*box-shadow : 0 px 0 px 144 px rgba(255, 255, 255, 0.75);*/
-    box-shadow: 0 0 144px rgba(0, 0, 0, 0.75);
-    border: 1px outset rgba(255, 255, 255, 0.75);
+  /*box-shadow : 0 px 0 px 144 px rgba(255, 255, 255, 0.75);*/
+  box-shadow: 0 0 144px rgba(0, 0, 0, 0.75);
+  border: 1px outset rgba(255, 255, 255, 0.75);
 }
 
 .element .number {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 12px;
-    color: rgba(127, 255, 255, 0.75);
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 12px;
+  color: rgba(127, 255, 255, 0.75);
 }
 
 .element .symbol {
-    position: absolute;
-    top: 40px;
-    left: 0;
-    right: 0;
-    font-size: 60px;
-    font-weight: bold;
-    color: rgba(255, 255, 255, 0.75);
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.95);
+  position: absolute;
+  top: 40px;
+  left: 0;
+  right: 0;
+  font-size: 60px;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.75);
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.95);
 }
 
 .element .details {
-    position: absolute;
-    bottom: 15px;
-    left: 0;
-    right: 0;
-    font-size: 12px;
-    color: rgba(127, 255, 255, 0.75);
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  right: 0;
+  font-size: 12px;
+  color: rgba(127, 255, 255, 0.75);
+}
+
+#menu {
+  position: absolute;
+  bottom: 40px;
+  width: 100%;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+#menu:hover {
+  background-color: rgba(60, 120, 120, 0.5);
+  opacity: 1;
+  transition: opacity 1s ease;
 }
 
 button {
-    color: rgba(37, 74, 74, 0.75);
-    /*background: transparent;*/
-    outline: 1px solid rgba(60, 120, 120, 0.75);
-    border: 10px;
-    padding: 5px 10px;
-    cursor: pointer;
+  color: rgba(37, 74, 74, 0.75);
+  background-color: rgba(186, 248, 255, 0.85);
+  outline: 1px solid rgba(60, 120, 120, 0.75);
+  border: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
 }
 
 button:hover {
-    background-color: rgba(77, 153, 153, 0.75);
-    color: rgba(120, 240, 240, 0.75);
+  background-color: rgba(77, 153, 153, 0.75);
+  color: rgba(120, 240, 240, 0.75);
 }
 
 button:active {
-    color: #000000;
-    background-color: rgba(0, 255, 255, 0.75);
+  color: #244949;
+  background-color: rgba(144, 234, 234, 0.75);
 }
 
 .loading {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 0;
-    z-index: -1;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0;
+  z-index: -1;
 }
 
 .loading svg {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .loading #pulsar {
-    stroke-dasharray: 400;
-    -webkit-animation: dash 4s infinite linear forwards;
+  stroke-dasharray: 400;
+  -webkit-animation: dash 4s infinite linear forwards;
 }
 
 /*Animation*/
 @-webkit-keyframes dash {
-    from {
-        stroke-dashoffset: 814;
-    }
-    to {
-        stroke-dashoffset: -814;
-    }
+  from {
+    stroke-dashoffset: 814;
+  }
+  to {
+    stroke-dashoffset: -814;
+  }
 }
