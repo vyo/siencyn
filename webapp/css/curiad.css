@@ -51,7 +51,7 @@ a {
 
 .element:hover {
   /*box-shadow : 0 px 0 px 144 px rgba(255, 255, 255, 0.75);*/
-  box-shadow: 0 0 144px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 144px rgba(255, 255, 255, 1);
   border: 1px outset rgba(255, 255, 255, 0.75);
 }
 
