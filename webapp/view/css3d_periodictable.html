@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title>Siencyn - Curiad</title>
+    <link rel="stylesheet" type="text/css" href="../css/curiad.css">
+    <script type="text/javascript" src="../lib/stats.min.js" defer></script>
+    <script type="text/javascript" src="../lib/three.min.js" defer></script>
+    <script type="text/javascript" src="../js/libs/tween.min.js" defer></script>
+    <script type="text/javascript" src="../js/controls/TrackballControls.js" defer></script>
+    <script type="text/javascript" src="../js/renderers/CSS3DRenderer.js" defer></script>
+    <script src="../js/curiad.js" defer></script>
+</head>
+<body>
+
+<div id="container"></div>
+<div class="loading">
+    <svg version="1.2" height="200" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <path id="pulsar" stroke="rgba(0,155,155,1)" fill="none" stroke-width="1" stroke-linejoin="round"
+              d="M0,90 L250,90 Q257,60 262,87 T267,95 270,88 273,92 t6,35 7,-60 T290,127 297,107 s2,-11 10,-10 1,1 8,-10 T319,95 c6,4 8,-6 10,-17 s2,10 9,11 h210"></path>
+        <!--<path id="pulsar" stroke="rgba(0,155,155,1)" fill="none" stroke-width="1"stroke-linejoin="round" d="M0,90 h410" />-->
+    </svg>
+</div>
+<div id="menu">
+    <button id="table">TABLE</button>
+    <button id="sphere">SPHERE</button>
+    <button id="helix">HELIX</button>
+    <button id="grid">GRID</button>
+</div>
+
+</body>
+</html>
